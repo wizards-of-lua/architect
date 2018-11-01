@@ -49,6 +49,12 @@ And
 ```
 will transform the player "mickkay" into an architect.
 
+And the command
+```
+/architect @a[r=6]
+```
+will transform all players inside a circle with radius 6 around the sender into an architect.
+
 ### How to Change the Active Tool? 
 To change the active tool just type the tool's name into the chat window. Please ensure to only use upper case characters.
 For example, to activate the "bar" tool you have to type "BAR" (followed by the "Enter" key).
