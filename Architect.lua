@@ -32,8 +32,8 @@ local tools = {
 function Architect.new(player)
   player = player or spell.owner
   if type(player)=="string" then
-    local p=Entities.find("@a[name="..player.."]")[1]
-    if p==nil then
+    local p = Entities.find("@a[name="..player.."]")[1]
+    if p == nil then
       error("Can't find player '%s'",player)
     else
       player = p
