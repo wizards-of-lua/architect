@@ -22,7 +22,7 @@ These are the steps to install and run this spell pack on your Minecraft Server:
      [Wizards of Lua Modification](https://minecraft.curseforge.com/projects/wizards-of-lua/files) and place it
      into the `mods` directory of your Minecraft server.
      
-3. **Install The Rocket Launcher Spell Pack**
+3. **Install The Architect's Spell Pack**
 
     Download the JAR file containing the latest Version of 
     [The Architect's Spell Pack](https://minecraft.curseforge.com/projects/architects-spell-pack/files) and place it
