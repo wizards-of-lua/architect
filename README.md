@@ -9,7 +9,7 @@ For example, if you activate the BAR tool, you can build a stack of blocks with 
 
 ## How to Install?
 This spell pack is dependent on [Minecraft Forge](http://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.12.2.html) 
-and the [Wizards of Lua Modification](https://minecraft.curseforge.com/projects/wizards-of-lua/files), version 2.5.0 or later.
+and the [Wizards of Lua Modification](https://minecraft.curseforge.com/projects/wizards-of-lua/files), version 2.10.0 or later.
 
 These are the steps to install and run this spell pack on your Minecraft Server:
 
