@@ -25,7 +25,7 @@ These are the steps to install and run this spell pack on your Minecraft Server:
 3. **Install The Rocket Launcher Spell Pack**
 
     Download the JAR file containing the latest Version of 
-    [The Rocket Launcher Spell Pack](https://minecraft.curseforge.com/projects/rocket-launcher-spell-pack/files) and place it
+    [The Architect's Spell Pack](https://minecraft.curseforge.com/projects/architects-spell-pack/files) and place it
     into the `mods` directory of your Minecraft server.
     
 4. **Restart the Server**
