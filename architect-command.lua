@@ -14,6 +14,9 @@ function pkg.registerCommand()
 end
 
 function pkg.architect(name)
+  if not name and spell.owner then
+    name = spell.owner.name
+  end
   if name:match("^@.*") then
     local found = Entities.find(name)
     for _,p in pairs(found) do
