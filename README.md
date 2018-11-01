@@ -34,8 +34,20 @@ These are the steps to install and run this spell pack on your Minecraft Server:
 ### How to Become an Architect?
 #### By Spell Pack Command
 ```
+/architect [<player>]
+```
+
+For example, the command
+```
 /architect
 ```
+will transform yourself into an architect.
+
+And
+```
+/architect mickkay
+```
+will transform the player "mickkay" into an architect.
 
 ### How to Change the Active Tool? 
 To change the active tool just type the tool's name into the chat window. Please ensure to only use upper case characters.
