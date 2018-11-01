@@ -41,7 +41,7 @@ These are the steps to install and run this spell pack on your Minecraft Server:
 To change the active tool just type the tool's name into the chat window. Please ensure to only use upper case characters.
 For example, to activate the "bar" tool you have to type "BAR" (followed by the "Enter" key).
 
-The following tools are currently supported: [BAR](#bar), [FLOOR](#floor), [WALL](#wall), [CUT](#cut), [COPY](#copy), [PASTE](#paste), [REPLACE](#replace), [FILL](#fill), and [DELETE](#delete).
+The following tools are currently supported: [BAR](#bar), [FLOOR](#floor), [WALL](#wall), [CUT](#cut), [COPY](#copy), [PASTE](#paste), [REPLACE](#replace), [FILL](#fill), [DELETE](#delete), and [OFF](#off).
 
 To deactivate the current tool just type "OFF". This will set you back into the normal mode.
 
@@ -115,3 +115,6 @@ DELETE 10000
 ```
 you will delete a structure with a maximum of 10000 blocks if you place a block next to the structure.
 
+### OFF
+
+This will deactivate the current tool.
