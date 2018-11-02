@@ -6,6 +6,7 @@ By executing the /architect command you can turn yourself into an architect.
 As an architect you are able to define what happens when you place a block into the world.
 For example, if you activate the BAR tool, you can build a stack of blocks with just one click.
 
+[![This is a short teaser demonstrating the in-game use of the Architect's spell pack. ](http://img.youtube.com/vi/UzoM1oS2PEw/0.jpg)](http://www.youtube.com/watch?v=UzoM1oS2PEw)
 
 ## How to Install?
 This spell pack is dependent on [Minecraft Forge](http://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.12.2.html) 
