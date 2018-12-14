@@ -79,49 +79,56 @@ function Architect:start()
           local message = event.message
           if message=="TOOL" then
             event.canceled = true
-            --self:whisper("Current Tool is "..self.tool)
+            self:tellTool()
           elseif tools[message] then
             self.tool = message
             event.canceled = true
+            self:tellTool()
           else
             if message:match("BAR %d+") then
               self.tool = "BAR"
               local val = tonumber(message:match("%d+"))
               self.options[self.tool].length = val
               event.canceled = true
+              self:tellTool()
             elseif message:match("FLOOR %d+") then
               self.tool = "FLOOR"
               local val = tonumber(message:match("%d+"))
               self.options[self.tool].maxsel = val
               event.canceled = true
+              self:tellTool()
             elseif message:match("COPY %d+") then
               self.tool = "COPY"
               local val = tonumber(message:match("%d+"))
               self.options[self.tool].maxsel = val
               event.canceled = true
+              self:tellTool()
             elseif message:match("CUT %d+") then
               self.tool = "CUT"
               local val = tonumber(message:match("%d+"))
               self.options[self.tool].maxsel = val
               event.canceled = true
+              self:tellTool()
             elseif message:match("REPLACE %d+") then
               self.tool = "REPLACE"
               local val = tonumber(message:match("%d+"))
               self.options[self.tool].maxsel = val
               event.canceled = true
+              self:tellTool()
             elseif message:match("FILL %d+") then
               self.tool = "FILL"
               local val = tonumber(message:match("%d+"))
               self.options[self.tool].maxsel = val
               event.canceled = true
+              self:tellTool()
             elseif message:match("DELETE %d+") then
               self.tool = "DELETE"
               local val = tonumber(message:match("%d+"))
               self.options[self.tool].radius = val
               event.canceled = true
+              self:tellTool()
             end
           end
-          self:whisper("Current Tool is "..self.tool)
         end
       end
     end
@@ -136,6 +143,10 @@ function Architect:start()
       end
     end
   end
+end
+
+function Architect:tellTool()
+  self:whisper("Current Tool is "..self.tool)
 end
 
 -- Handles the given event
