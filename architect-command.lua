@@ -2,15 +2,21 @@
 
 local pkg = {}
 local module = ...
+local log
 local USAGE = "/architect [<player>]"
 
-function pkg.registerCommand()
+function pkg.registerCommand(permissionLevel)
+  permissionLevel = permissionLevel or 0
   Commands.register("architect",string.format([[
     if spell.owner then
       spell.pos = spell.owner.pos
     end
     require('%s').architect(...)
-  ]],module),USAGE,1)
+  ]], module), USAGE, permissionLevel)
+end
+
+function pkg.deregisterCommand()
+  Commands.deregister("architect")
 end
 
 function pkg.architect(name)
@@ -26,6 +32,15 @@ function pkg.architect(name)
     require('architect.Architect')
     Architect(name):start()
   end
+end
+
+-- Logs the given message into the chat
+function log(message, ...)
+  local n = select('#', ...)
+  if n>0 then
+    message = string.format(message, ...)
+  end
+  spell:execute("say %s", message)
 end
 
 return pkg
