@@ -138,4 +138,22 @@ you will delete a structure with a maximum of 10000 blocks if you place a block 
 
 This will deactivate the current tool.
 
+## How to Configure?
 
+### Set the "architect" command permission level to 0
+Add the following code to the server's `startup.lua` file:
+```lua
+Events.on("architect.StartupEvent"):call(function(event)
+  local data = event.data
+  data.commandPermissionLevel = 0 -- default is 1
+end)
+```
+
+### Disable the "architect" command
+Add the following code to the server's `startup.lua` file:
+```lua
+Events.on("architect.StartupEvent"):call(function(event)
+  local data = event.data
+  data.enableCommands = false
+end)
+```
