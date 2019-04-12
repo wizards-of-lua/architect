@@ -154,6 +154,10 @@ end
 
 -- Handles the given event
 function Architect:handle(event)
+  if self.player.gamemode ~= "survival" and self.player.gamemode ~= "creative" then
+    self:whisper("You must be in 'creative' or 'survial' mode to be an architect, sorry!")
+    return
+  end
   if self.mode==ASYNC then
     -- handle the event in another spell
     self.castCount = self.castCount+1
