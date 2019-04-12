@@ -96,14 +96,16 @@ local function rotationBetween(o1, o2)
   return rots[o2]-rots[o1]
 end
 
-function pkg.paste(snapshot)
+function pkg.paste(snapshot, setBlockFunc)
+  setBlockFunc = setBlockFunc or function(blk) spell.block = blk end
   local origin = spell.pos
   local facing = snapshot.facing
   local pivot = snapshot.pivot
   local rot=rotationBetween(facing, spell.facing)
   for i,block in pairs(snapshot.blocks) do
     spell.pos   = origin + pkg.rotate(pivot,rot,block.pos)
-    spell.block = block.state:rotate(rot)
+    --spell.block = block.state:rotate(rot)
+    setBlockFunc(block.state:rotate(rot))
   end
   spell.pos = origin
 end

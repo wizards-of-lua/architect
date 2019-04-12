@@ -3,6 +3,8 @@
 local module = ...
 local log
 
+local MAY_SET_BLOCK_EVENT = "architect.MaySetBlockEvent"
+
 require "architect.Spell"
 clipboard    = require "architect.clipboard"
 construction = require "architect.construction"
@@ -44,6 +46,7 @@ function Architect.new(player)
   end
   local self = {
     playerName = player.name ,
+    player     = player ,
     tool       = "OFF" ,
     mode       = ASYNC ,
     facing     = player.facing ,
@@ -216,7 +219,8 @@ function Architect:bar(event,options)
   local b   = spell.block
   for i=1,n-1 do
     spell:move(event.face)
-    spell.block = b
+    --spell.block = b
+    self:trySetBlock(b)
   end
 end
 
@@ -352,7 +356,8 @@ function Architect:floor(event,options)
   local posL   = self:selectblocks(spell.pos, maxsel, SAME_Y, NOT_SOLID)
   for i,pos in pairs(posL) do
     spell.pos   = pos
-    spell.block = block
+    --spell.block = block
+    self:trySetBlock(block)
   end
 end
 
@@ -376,7 +381,8 @@ function Architect:wall(event,options)
   local posL  = self:selectblocks(spell.pos, maxsel, area, NOT_SOLID)
   for i,pos in pairs(posL) do
     spell.pos   = pos
-    spell.block = block
+    --spell.block = block
+    self:trySetBlock(block)
   end
 end
 
@@ -385,7 +391,8 @@ function Architect:copy(event,options)
   local maxsel = options.maxsel
   spell.pos    = event.pos
   spell:move(event.face)
-  spell.block  = Blocks.get("air")
+  --spell.block  = Blocks.get("air")
+  self:trySetBlock(Blocks.get("air"))
   spell.pos    = event.pos
 
   --print("copy",maxsel, spell.pos)
@@ -420,7 +427,8 @@ function Architect:paste(event,options)
 
   --print("paste",maxsel, spell.pos)
   local clip = clipboard.getClip(self.playerName.."-clipboard")
-  construction.paste(clip)
+  local func = function(blk ) self:trySetBlock(blk) end
+  construction.paste(clip, func)
 end
 
 -- Replaces all connected blocks equal to the clicked one with a copy of the created one
@@ -437,7 +445,8 @@ function Architect:replace(event,options)
   
   for i,pos in pairs(posL) do
     spell.pos   = pos
-    spell.block = newBlock
+    --spell.block = newBlock
+    self:trySetBlock(newBlock)
   end
 end
 
@@ -451,7 +460,8 @@ function Architect:fill(event,options)
   local posL   = self:selectblocks(spell.pos, maxsel, SAME_OR_BELOW_Y(spell.pos.y), NOT_SOLID)
   for i,pos in pairs(posL) do
     spell.pos   = pos
-    spell.block = block
+    --spell.block = block
+    self:trySetBlock(block)
   end
 end
 
@@ -470,7 +480,8 @@ function Architect:delete(event,options)
 
   for i,pos in pairs(posL) do
     spell.pos   = pos
-    spell.block = newBlock
+    --spell.block = newBlock
+    self:trySetBlock(newBlock)
   end
 end
 
@@ -480,7 +491,8 @@ function Architect:cut(event,options)
   spell.pos    = event.pos
   spell:move(event.face)
   local newBlock = Blocks.get("air")
-  spell.block  = Blocks.get("air")
+  --spell.block  = Blocks.get("air")
+  self:trySetBlock(Blocks.get("air"))
   spell.pos    = event.pos
 
   --print("cut",maxsel, spell.pos)
@@ -504,7 +516,8 @@ function Architect:cut(event,options)
   
   for i,pos in pairs(posL) do
     spell.pos   = pos
-    spell.block = newBlock
+    --spell.block = newBlock
+    self:trySetBlock(newBlock)
   end
   
   clipboard.putClip(snapshot,self.playerName.."-clipboard")
@@ -543,6 +556,16 @@ function Architect:selectblocks(start, maxsel, area, matcher)
   return result
 end
 
+
+function Architect:trySetBlock(block)
+  --spell.block = block
+  local data = {pos = spell.pos, player = self.player, result = true, block = block}
+  Events.fire(MAY_SET_BLOCK_EVENT,data)
+  if data.result then
+    spell.block = block
+  end
+end
+
 -- Logs the given message into the chat
 function log(message, ...)
   local n = select('#', ...)
@@ -551,3 +574,4 @@ function log(message, ...)
   end
   spell:execute("say %s", message)
 end
+
