@@ -6,7 +6,6 @@ local log
 local USAGE = "/architect [<player>]"
 
 function pkg.registerCommand(permissionLevel)
-  permissionLevel = permissionLevel or 0
   Commands.register("architect",string.format([[
     if spell.owner then
       spell.pos = spell.owner.pos
