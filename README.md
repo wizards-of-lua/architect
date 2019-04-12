@@ -140,12 +140,12 @@ This will deactivate the current tool.
 
 ## How to Configure?
 
-### Set the "architect" command permission level to 0
+### Set the "architect" command permission level to nil (allowed for everyone)
 Add the following code to the server's `startup.lua` file:
 ```lua
 Events.on("architect.StartupEvent"):call(function(event)
   local data = event.data
-  data.commandPermissionLevel = 0 -- default is 1
+  data.commandPermissionLevel = nil -- default is 1
 end)
 ```
 
